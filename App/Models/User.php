@@ -13,4 +13,9 @@
 		public $email;
 		public $name;
 		
+		public function getName()
+		{
+			//
+		}
+		
 	}
