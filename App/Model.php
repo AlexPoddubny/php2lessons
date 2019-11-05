@@ -8,14 +8,33 @@
 	{
 		const TABLE = '';
 		
-		public static function findAll()
+		public static function findAll($param = [])
 		{
 			$db = new Db();
+			$query = 'SELECT * FROM ' . static::TABLE;
+			if ($param){
+				if (isset($param[':id'])){
+					$query .= ' WHERE id = :id';
+				}
+				if (isset($param[':count'])){
+					$query .= ' LIMIT ' . $param[':count'];
+					$param = [];
+				}
+			}
 			return $db->query(
-				'SELECT * FROM ' . static::TABLE,
-				static::class
+				$query,
+				static::class,
+				$param
 			);
 		}
 		
-		abstract public function getName();
+		public static function getByCount($count)
+		{
+			return static::findAll([':count' => $count]);
+		}
+		
+		public static function findById($id)
+		{
+			return static::findAll([':id' => $id]);
+		}
 	}
