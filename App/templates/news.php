@@ -16,9 +16,8 @@
 	<?php foreach ($news as $article){ ?>
 		<div>
 			<a href="/article.php?id=<?php echo $article->id; ?>">
-				<?php echo $article->title; ?>
+				<?php echo trim($article->title); ?>
 			</a>
-			<p><?php echo $article->content; ?></p>
 		</div>
 	<?php } ?>
 </body>

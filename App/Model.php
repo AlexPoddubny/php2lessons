@@ -37,9 +37,6 @@
 		
 		public function insert()
 		{
-			if (!$this->isNew()){
-				return;
-			}
 			$columns = [];
 			$values = [];
 			foreach ($this as $k => $v){
@@ -54,12 +51,52 @@
 				VALUE (' . implode(',', array_keys($values)) . ')';
 			$db = Db::instance();
 			if ($db->execute($sql, $values)){
-				return $db->lastInsertedId();
+				$this->id = $db->lastInsertedId();
 			};
-			return false;
 		}
 		
+		public function update()
+		{
+			$columns = [];
+			$values = [];
+			$sql = 'UPDATE ' . static::TABLE . ' SET ';
+			foreach ($this as $k => $v){
+				$columns[] = $k;
+				$values[':' . $k] = $v;
+				if ('id' == $k){
+					continue;
+				}
+				$sql .= $k . '=:' . $k . ',';
+			}
+			$sql = substr($sql, 0, -1) . ' WHERE id=:id';
+			$db = Db::instance();
+			$db->execute($sql, $values);
+		}
 		
+		public function delete()
+		{
+			var_dump($this);
+			if ($this->isNew()){
+				echo 'No id=' . $this->id;
+				return false;
+			}
+			$sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
+			$value = [];
+			$value[':id'] = $this->id;
+			//var_dump($sql, $value);
+			//die;
+			$db = Db::instance();
+			return $db->execute($sql, $value);
+		}
+		
+		public function save()
+		{
+			if ($this->isNew()){
+				$this->insert();
+			} else {
+				$this->update();
+			}
+		}
 		
 		public static function getByCount(Int $count)
 		{
@@ -68,6 +105,6 @@
 		
 		public static function findById(Int $id)
 		{
-			return static::findAll([':id' => $id]);
+			return static::findAll([':id' => $id])[0];
 		}
 	}

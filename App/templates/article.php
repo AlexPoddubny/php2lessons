@@ -6,17 +6,17 @@
 	
 </head>
 <body>
-<article><?php foreach ($article as $line) { ?>
-	<h2><?php echo $line->title; ?></h2>
-	<p><?php echo $line->content; ?></p>
+<article>
+	<h2><?php echo trim($article->title); ?></h2>
+	<p><?php echo trim($article->content); ?></p>
 	
 	<a href="javascript:history.back()">
 		Назад
 	</a>
-	<?php if (!empty($line->author)) : ?>
-		<div class="author">Автор: <?php echo $line->author->name; ?></div>
+	<?php if (!empty($article->author)) : ?>
+		<div class="author">Автор: <?php echo $article->author->name; ?></div>
 	<?php endif; ?>
-	<?php } ?>
+	
 </article>
 </body>
 </html>
