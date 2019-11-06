@@ -4,6 +4,8 @@
 	namespace App;
 	
 	
+	use PDO;
+	
 	class Db
 	{
 		use Singleton;
@@ -13,7 +15,7 @@
 		protected function __construct()
 		{
 			$config = Config::instance()->data;
-			$this->dbh = new \PDO(
+			$this->dbh = new PDO(
 				'mysql:host=' . $config['host'] .
 				';dbname=' . $config['dbname'],
 				$config['user'],
@@ -33,7 +35,7 @@
 			$sth = $this->dbh->prepare($sql);
 			$res = $sth->execute($param);
 			if (false !== $res){
-				return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+				return $sth->fetchAll(PDO::FETCH_CLASS, $class);
 			}
 			return [];
 		}
