@@ -12,8 +12,13 @@
 		
 		protected function __construct()
 		{
-			$this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=test', 'root',
-				'1');
+			$config = Config::instance()->data;
+			$this->dbh = new \PDO(
+				'mysql:host=' . $config['host'] . ';dbname=' .
+				$config['dbname'],
+				$config['user'],
+				$config['password']
+			);
 		}
 		
 		public function execute($sql, $param = [])
