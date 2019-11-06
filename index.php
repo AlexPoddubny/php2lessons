@@ -9,7 +9,7 @@
 	//$users = \App\Models\User::getByCount(2);
 	$news = \App\Models\News::getByCount(3);
 	//$news = \App\Models\News::findAll();
-	var_dump($news);
+	//var_dump($news);
 	
 	include __DIR__ . '/App/templates/news.php';
 	
