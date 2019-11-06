@@ -18,7 +18,7 @@
 				}
 				if (isset($param[':count'])){
 					$query .= ' LIMIT ' . $param[':count'];
-					$param = [];
+					unset($param[':count']);
 				}
 			}
 			return $db->query(
