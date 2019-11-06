@@ -4,7 +4,7 @@
 	namespace App;
 	
 	
-	abstract class Singleton
+	trait Singleton
 	{
 		public $counter;
 		
