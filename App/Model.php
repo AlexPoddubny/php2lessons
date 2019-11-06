@@ -10,7 +10,7 @@
 		
 		public static function findAll($param = [])
 		{
-			$db = new Db();
+			$db = Db::instance();
 			$query = 'SELECT * FROM ' . static::TABLE;
 			if ($param){
 				if (isset($param[':id'])){
@@ -28,12 +28,12 @@
 			);
 		}
 		
-		public static function getByCount($count)
+		public static function getByCount(Int $count)
 		{
 			return static::findAll([':count' => $count]);
 		}
 		
-		public static function findById($id)
+		public static function findById(Int $id)
 		{
 			return static::findAll([':id' => $id]);
 		}
