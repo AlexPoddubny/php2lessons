@@ -14,8 +14,8 @@
 		{
 			$config = Config::instance()->data;
 			$this->dbh = new \PDO(
-				'mysql:host=' . $config['host'] . ';dbname=' .
-				$config['dbname'],
+				'mysql:host=' . $config['host'] .
+				';dbname=' . $config['dbname'],
 				$config['user'],
 				$config['password']
 			);
