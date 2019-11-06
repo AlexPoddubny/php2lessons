@@ -8,6 +8,8 @@
 	{
 		const TABLE = '';
 		
+		public $id;
+		
 		public static function findAll($param = [])
 		{
 			$db = Db::instance();
@@ -26,6 +28,32 @@
 				static::class,
 				$param
 			);
+		}
+		
+		public function isNew()
+		{
+			return empty($this->id);
+		}
+		
+		public function insert()
+		{
+			if (!$this->isNew()){
+				return;
+			}
+			$columns = [];
+			$values = [];
+			foreach ($this as $k => $v){
+				if ('id' == $k){
+					continue;
+				}
+				$columns[] = $k;
+				$values[':' . $k] = $v;
+			}
+			$sql = 'INSERT INTO ' . static::TABLE . ' (' .
+				implode(',', $columns) . ')
+				VALUE (' . implode(',', array_keys($values)) . ')';
+			$db = Db::instance();
+			$db->execute($sql, $values);
 		}
 		
 		public static function getByCount(Int $count)
