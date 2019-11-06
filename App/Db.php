@@ -39,4 +39,9 @@
 			}
 			return [];
 		}
+		
+		public function lastInsertedId()
+		{
+			return $this->dbh->lastInsertId();
+		}
 	}

@@ -53,8 +53,13 @@
 				implode(',', $columns) . ')
 				VALUE (' . implode(',', array_keys($values)) . ')';
 			$db = Db::instance();
-			$db->execute($sql, $values);
+			if ($db->execute($sql, $values)){
+				return $db->lastInsertedId();
+			};
+			return false;
 		}
+		
+		
 		
 		public static function getByCount(Int $count)
 		{
