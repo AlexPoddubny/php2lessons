@@ -75,7 +75,6 @@
 		
 		public function delete()
 		{
-			var_dump($this);
 			if ($this->isNew()){
 				echo 'No id=' . $this->id;
 				return false;
@@ -83,8 +82,6 @@
 			$sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
 			$value = [];
 			$value[':id'] = $this->id;
-			//var_dump($sql, $value);
-			//die;
 			$db = Db::instance();
 			return $db->execute($sql, $value);
 		}
@@ -114,10 +111,14 @@
 		{
 			$query = 'SELECT * FROM ' . static::TABLE . ' WHERE id = ' . $id;
 			$db = Db::instance();
-			return $db->query(
+			$res = $db->query(
 				$query,
 				static::class,
 				[]
-			)[0];
+			);
+			if ($res) {
+				return $res[0];
+			}
+			return false;
 		}
 	}
