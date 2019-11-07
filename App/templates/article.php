@@ -3,12 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Новость</title>
-	
+	<style>
+		* {
+			font-family: "Fira Code Light";
+		}
+		div {
+			margin-bottom: 15px;
+			padding: 10px;
+			border: 1px dotted green;
+		}
+	</style>
 </head>
 <body>
 <article>
 	<h2><?php echo trim($article->title); ?></h2>
-	<p><?php echo trim($article->content); ?></p>
+	<div><?php echo trim($article->content); ?></div>
 	
 	<a href="javascript:history.back()">
 		Назад

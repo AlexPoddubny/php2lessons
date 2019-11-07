@@ -12,13 +12,13 @@
 	/*
 	$user->name = 'Vasiliska';
 	$user->email = 'test1@test.com';
-	*/
+	
 	if ($user){
 		$user->delete();
 	}
 	$users = User::findAll();
-	
-	$news = News::getByCount(3);
+	*/
+	$news = News::findAll();
 	include __DIR__ . '/App/templates/news.php';
 	
 	
