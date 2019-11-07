@@ -11,7 +11,7 @@
 	</style>
 </head>
 <body>
-	<h1>News</h1>
+	<h1>Top News</h1>
 	<hr>
 	<?php foreach ($news as $article){ ?>
 		<div>

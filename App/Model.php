@@ -100,11 +100,24 @@
 		
 		public static function getByCount(Int $count)
 		{
-			return static::findAll([':count' => $count]);
+			$query = 'SELECT * FROM ' . static::TABLE .
+				' ORDER BY id DESC LIMIT ' . $count;
+			$db = Db::instance();
+			return $db->query(
+				$query,
+				static::class,
+				[]
+			);
 		}
 		
 		public static function findById(Int $id)
 		{
-			return static::findAll([':id' => $id])[0];
+			$query = 'SELECT * FROM ' . static::TABLE . ' WHERE id = ' . $id;
+			$db = Db::instance();
+			return $db->query(
+				$query,
+				static::class,
+				[]
+			)[0];
 		}
 	}
