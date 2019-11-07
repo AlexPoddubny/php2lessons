@@ -3,6 +3,9 @@
 <head>
 	<title>News</title>
 	<style>
+		* {
+			font-family: "Fira Code Light";
+		}
 		div {
 			margin-bottom: 15px;
 			padding: 10px;
@@ -21,6 +24,6 @@
 			
 		</div>
 	<?php } ?>
-	<a href="/App/Admin/admin.php">Administrate</a>
+	<a href="/App/Admin/admin.php">Administrate articles</a>
 </body>
 </html>
