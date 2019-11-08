@@ -7,12 +7,8 @@
 	class View
 		implements \Countable
 	{
-		protected $data = [];
 		
-		public function __set($k, $v)
-		{
-			$this->data[$k] = $v;
-		}
+		use Magic;
 		
 		public function render($template)
 		{
@@ -29,16 +25,6 @@
 		public function display($template)
 		{
 			echo $this->render($template);
-		}
-		
-		public function __get($k)
-		{
-			return $this->data[$k];
-		}
-		
-		public function __isset($k)
-		{
-			return isset($this->data[$k]);
 		}
 		
 		/**
