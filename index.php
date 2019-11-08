@@ -1,6 +1,8 @@
 <?php
 	
 	require __DIR__ . '/autoload.php';
+	
+	use App\Models\News;
 	use App\Models\User;
 	use App\View;
 	
@@ -25,10 +27,14 @@
 	
 	$news = News::findAll();
 	include __DIR__ . '/App/templates/news.php';
-	*/
+	
 	
 	$view = new View;
 	$view->users = User::findAll();
 	$view->title = 'Пользователи';
 	$view->display(__DIR__ . '/App/templates/index.php');
-	
+	*/
+	$view = new View;
+	$view->news = News::findAll();
+	$view->title = 'Top ' . count($view->news) . ' news';
+	$view->display(__DIR__ . '/App/templates/news.php');
