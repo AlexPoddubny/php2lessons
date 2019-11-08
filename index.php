@@ -2,6 +2,8 @@
 	
 	require __DIR__ . '/autoload.php';
 	use App\Models\User;
+	use App\View;
+	
 	/*
 	use App\Config;
 	use App\Models\News;
@@ -25,8 +27,10 @@
 	include __DIR__ . '/App/templates/news.php';
 	*/
 	
-	$users = User::findAll();
+	//$users = User::findAll();
 	
-	include __DIR__ . '/App/templates/index.php';
-	
+	$view = new View;
+	$view->users = User::findAll();
+	$view->title = 'Пользователи';
+	$view->display(__DIR__ . '/App/templates/index.php');
 	
