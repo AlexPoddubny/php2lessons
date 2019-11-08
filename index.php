@@ -32,7 +32,7 @@
 	$view = new View;
 	$view->users = User::findAll();
 	$view->title = 'Пользователи';
-	$view->display(__DIR__ . '/App/templates/index.php');
+	$view->display(__DIR__ . '/App/templates/news.php');
 	*/
 	$view = new View;
 	$view->news = News::findAll();

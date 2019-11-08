@@ -1,6 +1,7 @@
 <?php
 	
 	use App\Models\News;
+	use App\View;
 	
 	require __DIR__ . '/../../autoload.php';
 	
@@ -9,5 +10,7 @@
 		$article->delete();
 	}
 	
-	$news = News::findAll();
-	include __DIR__ . '/../../App/templates/admin/index.php';
+	$view = new View;
+	$view->news = News::findAll();
+	$view->title = 'Админка';
+	$view->display(__DIR__ . '/../../App/templates/admin/news.php');

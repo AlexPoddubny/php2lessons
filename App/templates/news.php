@@ -1,5 +1,5 @@
 <body>
-	<h1><?php echo $title?></h1>
+	<h1><?php echo $title; ?></h1>
 	<hr>
 	<?php foreach ($news as $article){ ?>
 		<div class="panel panel-default">
