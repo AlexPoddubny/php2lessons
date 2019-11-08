@@ -27,8 +27,6 @@
 	include __DIR__ . '/App/templates/news.php';
 	*/
 	
-	//$users = User::findAll();
-	
 	$view = new View;
 	$view->users = User::findAll();
 	$view->title = 'Пользователи';

@@ -14,6 +14,10 @@
 		public $email;
 		public $name;
 		
+		/**
+		 * Returns user's e-mail
+		 * @return string User's e-mail
+		 */
 		public function getEmail()
 		{
 			return $this->email;

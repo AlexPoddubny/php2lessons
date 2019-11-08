@@ -6,5 +6,7 @@
 	
 	interface HasEmail
 	{
+		
 		public function getEmail();
+		
 	}
