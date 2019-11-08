@@ -1,5 +1,5 @@
 <?php
-	
+	/*
 	use App\Config;
 	use App\Models\News;
 	use App\Models\User;
@@ -17,8 +17,11 @@
 		$user->delete();
 	}
 	$users = User::findAll();
-	*/
+	
 	$news = News::findAll();
 	include __DIR__ . '/App/templates/news.php';
+	*/
+	
+	include __DIR__ . '/App/templates/index.php';
 	
 	
