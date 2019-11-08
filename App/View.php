@@ -16,7 +16,9 @@
 			foreach ($this->data as $prop => $value){
 				$$prop = $value;
 			}
+			include __DIR__ . '/templates/header.php';
 			include $template;
+			include __DIR__ . '/templates/footer.php';
 			$content = ob_get_contents();
 			ob_end_clean();
 			return $content;

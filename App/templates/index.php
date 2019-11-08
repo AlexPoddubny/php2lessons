@@ -1,4 +1,8 @@
-<?php
-	include __DIR__ . '/header.php';
-	include __DIR__ . '/body.php';
-	include __DIR__ . '/footer.php';
+<body>
+<h1><?php echo $title; ?></h1>
+<?php foreach ($users as $user){ ?>
+<div class="panel panel-default">
+	<div class="panel-heading"><?php echo $user->name; ?></div>
+	<div class="panel-body"><?php echo $user->email; ?></div>
+</div>
+<?php } ?>
