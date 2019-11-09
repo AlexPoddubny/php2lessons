@@ -5,8 +5,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<a href="/article.php?id=<?php echo $article->id; ?>">
-					<?php echo trim($article->title); ?><br>
-				</a>
+					<?php echo trim($article->title); ?>
+				</a> <?php if ($article->author) { ?>
+				<div class="panel-body">Автор: <?php echo
+					$article->author->name; ?></div>
+				<?php } ?>
 				<a href="/App/Admin/edit.php?id=<?php echo $article->id; ?>">Edit</a>&nbsp;
 				<a href="/App/Admin/admin.php?id=<?php echo	$article->id;?>">
 					Delete
