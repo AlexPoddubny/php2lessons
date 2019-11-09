@@ -10,10 +10,10 @@
 				<div class="panel-body">Автор: <?php echo
 					$article->author->name; ?></div>
 				<?php } ?>
-				<a href="/App/Admin/edit.php?id=<?php echo $article->id; ?>">Edit</a>&nbsp;
-				<a href="/App/Admin/admin.php?id=<?php echo	$article->id;?>">
-					Delete
-				</a>
+				<div class="panel-body">
+					<a href="/App/Admin/edit.php?id=<?php echo $article->id; ?>">Edit</a>&nbsp;
+					<a href="/App/Admin/admin.php?id=<?php echo	$article->id;?>">Delete</a>
+				</div>
 			</div>
 		</div>
 	<?php } ?>
