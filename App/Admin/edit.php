@@ -3,14 +3,18 @@
 	require __DIR__ . '/../../autoload.php';
 	
 	use App\Models\News;
+	use App\View;
 	
+	$view = new View();
 	if (!empty($_GET)){
 		if ('new' == $_GET['id']){
-			$article = new News();
+			$view->article = new News();
+			$view->title = 'Добавить';
 		} else {
-			$article = News::findById($_GET['id']);
+			$view->article = News::findById($_GET['id']);
+			$view->title = 'Редактировать';
 		}
-		include __DIR__ . '/../../App/templates/admin/edit.php';
+		$view->display(__DIR__ . '/../../App/templates/admin/edit.php');
 	}
 	
 	if (!empty($_POST)){
