@@ -4,7 +4,7 @@
 	<?php foreach ($news as $article){ ?>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<a href="/article.php?action=One&id=<?php echo $article->id;?>">
+				<a href="/article.php?action=one&id=<?php echo $article->id;?>">
 					<?php echo trim($article->title); ?>
 				</a>
 				<?php if (!empty($article->author)) { ?>

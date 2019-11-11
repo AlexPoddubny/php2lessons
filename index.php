@@ -1,20 +1,10 @@
 <?php
 	
-	
-	$url = explode('/', $_SERVER['REQUEST_URI']);
-	var_dump($_SERVER['REQUEST_URI'], $url);
-	
-	$ctrlRequest = !empty($url[1]) ? $url[1] : 'News';
-	var_dump($ctrlRequest);
-	$ctrlClassName = '\App\Controllers\\' . ucfirst($ctrlRequest);
-	var_dump($ctrlClassName);
 	require __DIR__ . '/autoload.php';
-	
+	$url = explode('/', $_SERVER['REQUEST_URI']);
+	$ctrlRequest = !empty($url[1]) ? $url[1] : 'News';
+	$ctrlClassName = '\App\Controllers\\' . ucfirst($ctrlRequest);
 	$controller = new $ctrlClassName;
-	
-	if (!empty($_GET)){
-		$action = $_GET['action'];
-	} else {
-		$action = 'Index';
-	}
-	$controller->action($action);
+	$actionRequest = !empty($url[2]) ? $url[2] : 'Index';
+	$actionName = ucfirst($actionRequest);
+	$controller->action($actionName);
