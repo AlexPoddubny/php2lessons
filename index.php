@@ -1,10 +1,13 @@
 <?php
 	
+	use App\Controllers\News;
+	
 	require __DIR__ . '/autoload.php';
 	
-	use App\Models\News;
-	use App\Models\User;
-	use App\View;
-	
-	$controller = new \App\Controllers\News();
-	$controller->action('Index');
+	$controller = new News();
+	if (!empty($_GET)){
+		$action = $_GET['action'];
+	} else {
+		$action = 'Index';
+	}
+	$controller->action($action);
