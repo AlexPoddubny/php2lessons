@@ -1,5 +1,7 @@
 <?php
 	
+	var_dump($_SERVER['REQUEST_URI']);
+	die;
 	use App\Controllers\News;
 	
 	require __DIR__ . '/autoload.php';
