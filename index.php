@@ -1,12 +1,17 @@
 <?php
 	
-	var_dump($_SERVER['REQUEST_URI']);
-	die;
-	use App\Controllers\News;
 	
+	$url = explode('/', $_SERVER['REQUEST_URI']);
+	var_dump($_SERVER['REQUEST_URI'], $url);
+	
+	$ctrlRequest = !empty($url[1]) ? $url[1] : 'News';
+	var_dump($ctrlRequest);
+	$ctrlClassName = '\App\Controllers\\' . ucfirst($ctrlRequest);
+	var_dump($ctrlClassName);
 	require __DIR__ . '/autoload.php';
 	
-	$controller = new News();
+	$controller = new $ctrlClassName;
+	
 	if (!empty($_GET)){
 		$action = $_GET['action'];
 	} else {
