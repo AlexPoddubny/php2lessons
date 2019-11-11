@@ -18,6 +18,14 @@
 		
 		public function __get($k)
 		{
+			switch ($k) {
+				case 'author':
+					return Author::findById($this->author_id);
+					break;
+				default:
+					return null;
+			}
+			/*
 			if ('author' == $k){
 				if (isset($this->author_id)){
 					return Author::findById($this->author_id);
@@ -26,5 +34,17 @@
 				}
 			}
 			return null;
+			*/
+		}
+		
+		public function __isset($k)
+		{
+			switch ($k) {
+				case 'author':
+					return true;
+					break;
+				default:
+					return false;
+			}
 		}
 	}

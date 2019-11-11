@@ -1,4 +1,5 @@
 <body>
+	<?php var_dump($news[0]->author)?>
 	<h1><?php echo $title; ?></h1>
 	<hr>
 	<?php foreach ($news as $article){ ?>
@@ -7,7 +8,7 @@
 				<a href="/article.php?id=<?php echo $article->id; ?>">
 					<?php echo trim($article->title); ?>
 				</a>
-				<?php if ($article->author) { ?>
+				<?php if (!empty($article->author)) { ?>
 					<div class="panel-body">Автор: <?php echo
 						$article->author->name; ?></div>
 				<?php } ?>

@@ -6,7 +6,7 @@
 			<div class="panel-heading">
 				<a href="/article.php?id=<?php echo $article->id; ?>">
 					<?php echo trim($article->title); ?>
-				</a> <?php if ($article->author) { ?>
+				</a> <?php if (!empty($article->author)) { ?>
 				<div class="panel-body">Автор: <?php echo
 					$article->author->name; ?></div>
 				<?php } ?>

@@ -107,7 +107,7 @@
 			);
 		}
 		
-		public static function findById(Int $id)
+		public static function findById($id)
 		{
 			$query = 'SELECT * FROM ' . static::TABLE . ' WHERE id = ' . $id;
 			$db = Db::instance();
