@@ -119,6 +119,6 @@
 			if ($res) {
 				return $res[0];
 			}
-			return false;
+			return null;
 		}
 	}

@@ -15,12 +15,16 @@
 		protected function __construct()
 		{
 			$config = Config::instance()->data;
-			$this->dbh = new PDO(
-				'mysql:host=' . $config['host'] .
-				';dbname=' . $config['dbname'],
-				$config['user'],
-				$config['password']
-			);
+			try {
+				$this->dbh = new PDO(
+					'mysql:host=' . $config['host'] .
+					';dbname=' . $config['dbname'],
+					$config['user'],
+					$config['password']
+				);
+			} catch (\PDOException $e){
+				throw new \App\Exceptions\Db($e->getMessage());
+			}
 		}
 		
 		public function execute($sql, $param = [])

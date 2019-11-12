@@ -1,5 +1,8 @@
 <?php
 	
+	use App\Exceptions\Core;
+	use App\Exceptions\Db;
+	
 	require __DIR__ . '/autoload.php';
 	$url = explode('/', $_SERVER['REQUEST_URI']);
 	$ctrlRequest = !empty($url[1]) ? $url[1] : 'News';
@@ -10,4 +13,11 @@
 	//var_dump($actionRequest);
 	$actionName = ucfirst($actionRequest);
 	//var_dump($actionName);
-	$controller->action($actionName);
+	try {
+		$controller->action($actionName);
+	} catch (Core $e) {
+		echo 'Исключение класса ' . $e->getMessage();
+	} catch (Db $e){
+		echo 'Database error ' . $e->getMessage();
+	}
+	
