@@ -4,7 +4,7 @@
 	<?php foreach ($news as $article){ ?>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<a href="/article.php?action=one&id=<?php echo $article->id;?>">
+				<a href="/news/one/?id=<?php echo $article->id;?>">
 					<?php echo trim($article->title); ?>
 				</a>
 				<?php if (!empty($article->author)) { ?>
@@ -15,5 +15,5 @@
 		</div>
 	<?php } ?>
 	<div class="panel-heading">
-		<a href="/App/Admin/admin.php">Administrate articles</a>
+		<a href="/Admin">Administrate articles</a>
 	</div>

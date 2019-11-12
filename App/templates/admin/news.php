@@ -4,22 +4,22 @@
 	<?php foreach ($news as $article){ ?>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<a href="/article.php?id=<?php echo $article->id; ?>">
+				<a href="/news/one/?id=<?php echo $article->id; ?>">
 					<?php echo trim($article->title); ?>
 				</a> <?php if (!empty($article->author)) { ?>
 				<div class="panel-body">Автор: <?php echo
 					$article->author->name; ?></div>
 				<?php } ?>
 				<div class="panel-body">
-					<a href="/App/Admin/edit.php?id=<?php echo $article->id; ?>">Edit</a>&nbsp;
-					<a href="/App/Admin/admin.php?id=<?php echo	$article->id;?>">Delete</a>
+					<a href="/Admin/edit/?id=<?php echo $article->id; ?>">Edit</a>&nbsp;
+					<a href="/Admin/delete/?id=<?php echo $article->id; ?>">Delete</a>
 				</div>
 			</div>
 		</div>
 	<?php } ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<a href="/App/Admin/edit.php?id=new">Add news</a>
+			<a href="/Admin/new/">Add news</a>
 		</div>
 		<div class="panel-heading">
 			<a href="/">На главную</a>
