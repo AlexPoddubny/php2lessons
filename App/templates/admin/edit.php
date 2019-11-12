@@ -1,6 +1,6 @@
 <body>
 	<div class="panel panel-default">
-		<form action="/App/Admin/edit.php" method="post">
+		<form action="/Admin/save/" method="post">
 			<div  class="panel-heading">
 				<input type="text" name="title" style="width: 100%; text-align: left" value="<?php echo trim($article->title); ?>">
 				<?php if ($article->id){ ?>
