@@ -45,8 +45,8 @@
 				if (!empty($_POST['id'])){
 					$article->id = $_POST['id'];
 				}
-				$article->title = trim($_POST['title']);
-				$article->content = trim($_POST['content']);
+				$article->title = $_POST['title'];
+				$article->content = $_POST['content'];
 				$article->save();
 				header('Location:/Admin/');
 			}

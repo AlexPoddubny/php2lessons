@@ -62,7 +62,7 @@
 			$sql = 'UPDATE ' . static::TABLE . ' SET ';
 			foreach ($this as $k => $v){
 				$columns[] = $k;
-				$values[':' . $k] = $v;
+				$values[':' . $k] = trim($v);
 				if ('id' == $k){
 					continue;
 				}
