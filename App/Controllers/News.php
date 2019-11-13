@@ -25,16 +25,5 @@
 			$this->view->title = $this->view->article->title;
 			$this->view->display(__DIR__ . '/../templates/article.php');
 		}
-		
-		protected function actionCreate()
-		{
-			try {
-				$article = new \App\Models\News();
-				$article->fill([]);
-				$article->save();
-			} catch (MultiException $e) {
-				$this->view->errors = $e;
-			}
-			$this->view->display(__DIR__ . '/../templates/edit.php');
-		}
+
 	}

@@ -57,7 +57,6 @@
 		
 		public function update()
 		{
-			//var_dump($this);
 			$columns = [];
 			$values = [];
 			$sql = 'UPDATE ' . static::TABLE . ' SET ';
@@ -70,8 +69,7 @@
 				$sql .= $k . '=:' . $k . ',';
 			}
 			$sql = substr($sql, 0, -1) . ' WHERE id=:id';
-			//$values[':id'] =
-			//var_dump($sql, $values);
+			var_dump($values);
 			$db = Db::instance();
 			$db->execute($sql, $values);
 		}
@@ -94,7 +92,6 @@
 			if ($this->isNew()){
 				$this->insert();
 			} else {
-				//echo 'Saving edit';
 				$this->update();
 			}
 		}
