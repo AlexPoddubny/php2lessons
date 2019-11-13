@@ -39,14 +39,15 @@
 			}
 		}
 		
-		public function fill($data = [])
+		public function fill($data)
 		{
-			$e = new MultiException();
-			if (true){
-				$e[] = new \Exception('Заголовок неверный');
-			}if (true){
-				$e[] = new \Exception('Текст неверный');
+			if (!empty($data['id'])){
+				$this->id = $data['id'];
 			}
-			throw $e;
+			if (!empty($data['author_id'])){
+				$this->author_id = $data['author_id'];
+			}
+			$this->title = $data['title'];
+			$this->content = $data['content'];
 		}
 	}

@@ -57,18 +57,21 @@
 		
 		public function update()
 		{
+			//var_dump($this);
 			$columns = [];
 			$values = [];
 			$sql = 'UPDATE ' . static::TABLE . ' SET ';
 			foreach ($this as $k => $v){
 				$columns[] = $k;
-				$values[':' . $k] = trim($v);
+				$values[':' . $k] = $v;
 				if ('id' == $k){
 					continue;
 				}
 				$sql .= $k . '=:' . $k . ',';
 			}
 			$sql = substr($sql, 0, -1) . ' WHERE id=:id';
+			//$values[':id'] =
+			//var_dump($sql, $values);
 			$db = Db::instance();
 			$db->execute($sql, $values);
 		}
@@ -91,6 +94,7 @@
 			if ($this->isNew()){
 				$this->insert();
 			} else {
+				//echo 'Saving edit';
 				$this->update();
 			}
 		}

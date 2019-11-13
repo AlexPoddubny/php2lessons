@@ -31,11 +31,13 @@
 		{
 			$sth = $this->dbh->prepare($sql);
 			$res = $sth->execute($param);
+			//var_dump($res);
 			return $res;
 		}
 		
 		public function query($sql, $class, $param = [])
 		{
+			//var_dump($sql, $param);
 			$sth = $this->dbh->prepare($sql);
 			$res = $sth->execute($param);
 			if (false !== $res){

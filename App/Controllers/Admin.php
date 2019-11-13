@@ -40,13 +40,18 @@
 		
 		protected function actionSave()
 		{
+			//
 			if (!empty($_POST)){
 				$article = new News();
+				/*
 				if (!empty($_POST['id'])){
 					$article->id = $_POST['id'];
 				}
 				$article->title = $_POST['title'];
 				$article->content = $_POST['content'];
+				//echo 'Saving';
+				*/
+				$article->fill($_POST);
 				$article->save();
 				header('Location:/Admin/');
 			}
