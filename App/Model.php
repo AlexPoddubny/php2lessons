@@ -69,7 +69,7 @@
 				$sql .= $k . '=:' . $k . ',';
 			}
 			$sql = substr($sql, 0, -1) . ' WHERE id=:id';
-			var_dump($values);
+			//var_dump($values);
 			$db = Db::instance();
 			$db->execute($sql, $values);
 		}
