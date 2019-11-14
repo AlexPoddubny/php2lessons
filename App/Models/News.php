@@ -41,8 +41,21 @@
 		
 		public function fill($data)
 		{
+			$e = new MultiException();
+			$error = false;
 			foreach ($data as $prop => $value){
+				if ('title' == $prop && '' == $data[$prop]){
+					$e[] = new \Exception('Пустой заголовок!');
+					$error = true;
+				}
+				if ('content' == $prop && '' == $data[$prop]){
+					$e[] = new \Exception('Пустой Текст новости!');
+					$error = true;
+				}
 				$this->$prop = $value;
+			}
+			if ($error){
+				throw $e;
 			}
 		}
 	}

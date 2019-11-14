@@ -42,10 +42,15 @@
 		protected function actionSave()
 		{
 			if (!empty($_POST)){
-				$article = new News();
-				$article->fill($_POST);
-				$article->save();
-				header('Location:/Admin/');
+				try {
+					$article = new News();
+					$article->fill($_POST);
+					$article->save();
+					header('Location:/Admin/');
+				} catch (MultiException $e){
+					$this->view->errors = $e;
+					$this->view->display(__DIR__ . '/../../App/templates/error.php');
+				}
 			}
 		}
 		
