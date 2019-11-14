@@ -5,6 +5,7 @@
 	
 	
 	use App\Models\News;
+	use App\MultiException;
 	
 	class Admin
 		extends Base
