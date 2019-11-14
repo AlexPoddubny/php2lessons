@@ -2,6 +2,7 @@
 	
 	use App\Exceptions\Core;
 	use App\Exceptions\Db;
+	use App\Exceptions\Exception404;
 	
 	require __DIR__ . '/autoload.php';
 	$url = explode('/', $_SERVER['REQUEST_URI']);
@@ -15,9 +16,14 @@
 	//var_dump($actionName);
 	try {
 		$controller->action($actionName);
-	} catch (Core $e) {
-		echo 'Исключение класса ' . $e->getMessage();
+	} catch (Exception404 $e) {
+		$err = new \App\View();
+		$err->error = $e->getMessage();
+		//var_dump($err);
+		$err->display(__DIR__ . '/App/templates/error.php');
 	} catch (Db $e){
-		echo 'Database error ' . $e->getMessage();
+		$err = new \App\View();
+		$err->error = 'Ошибка соединения с базой';
+		$err->display(__DIR__ . '/App/templates/error.php');
 	}
 	
