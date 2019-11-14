@@ -5,6 +5,8 @@
 	
 	
 	use PDO;
+	use App\View;
+	use App\MultiException;
 	
 	class Db
 	{
@@ -15,15 +17,14 @@
 		protected function __construct()
 		{
 			$config = Config::instance()->data;
-			try {
-				$this->dbh = new PDO(
+			try {$this->dbh = new PDO(
 					'mysql:host=' . $config['host'] .
 					';dbname=' . $config['dbname'],
 					$config['user'],
 					$config['password']
 				);
 			} catch (\PDOException $e){
-				throw new \App\Exceptions\Db($e->getMessage());
+				throw new \App\Exceptions\Db();
 			}
 		}
 		
