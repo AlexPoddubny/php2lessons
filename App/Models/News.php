@@ -41,13 +41,8 @@
 		
 		public function fill($data)
 		{
-			if (!empty($data['id'])){
-				$this->id = $data['id'];
+			foreach ($data as $prop => $value){
+				$this->$prop = $value;
 			}
-			if (!empty($data['author_id'])){
-				$this->author_id = $data['author_id'];
-			}
-			$this->title = $data['title'];
-			$this->content = $data['content'];
 		}
 	}

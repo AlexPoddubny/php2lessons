@@ -40,7 +40,6 @@
 		
 		protected function actionSave()
 		{
-			//
 			if (!empty($_POST)){
 				$article = new News();
 				$article->fill($_POST);
