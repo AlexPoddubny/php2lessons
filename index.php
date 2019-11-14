@@ -18,11 +18,6 @@
 	} catch (\App\MultiException $e) {
 		$err = new \App\View();
 		$err->errors = $e;
-		//var_dump($err);
-		$err->display(__DIR__ . '/App/templates/error.php');
-	} catch (Db $e){
-		$err = new \App\View();
-		$err->error = 'Ошибка соединения с базой';
 		$err->display(__DIR__ . '/App/templates/error.php');
 	}
 	

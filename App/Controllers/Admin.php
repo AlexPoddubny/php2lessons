@@ -56,7 +56,8 @@
 		
 		protected function actionDelete()
 		{
-			$this->view->article = News::findById($_GET['id']);
+			$id = (int)$_GET['id'];
+			$this->view->article = News::findById($id);
 			$this->view->article->delete();
 			header('Location:/Admin/');
 		}
