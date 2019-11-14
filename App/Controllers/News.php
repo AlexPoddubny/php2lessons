@@ -4,9 +4,7 @@
 	namespace App\Controllers;
 	
 	
-	use App\Exceptions\Exception404;
 	use App\MultiException;
-	use App\View;
 	
 	class News
 		extends Base
