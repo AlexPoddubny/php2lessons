@@ -4,6 +4,7 @@
 	namespace App\Controllers;
 	
 	
+	use App\Logger;
 	use App\MultiException;
 	
 	class News

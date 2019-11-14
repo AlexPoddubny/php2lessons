@@ -4,6 +4,7 @@
 	namespace App\Controllers;
 	
 	
+	use App\Logger;
 	use App\Models\News;
 	use App\MultiException;
 	
@@ -12,7 +13,7 @@
 	{
 		protected function actionIndex()
 		{
-			$this->view->news = \App\Models\News::findAll();
+			$this->view->news = News::findAll();
 			$this->view->title = 'Панель администрирования';
 			$this->view->display(__DIR__ . '/../../App/templates/admin/news.php');
 		}
@@ -26,8 +27,12 @@
 		
 		protected function actionEdit()
 		{
-			if (!empty($_GET['id'])){
-				$this->view->article = News::findById($_GET['id']);
+			if (!empty($_GET['id'])) {
+				if (!$this->view->article = News::findById($_GET['id'])) {
+					$e = new MultiException();
+					$e[] = new \Exception('Новость отсутствует');
+					throw $e;
+				}
 				$this->view->title = 'Редактировать';
 				$this->actionShow();
 			}
@@ -49,6 +54,7 @@
 					header('Location:/Admin/');
 				} catch (MultiException $e){
 					$this->view->errors = $e;
+					Logger::logError($e);
 					$this->view->display(__DIR__ . '/../../App/templates/error.php');
 				}
 			}
