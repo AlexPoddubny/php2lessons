@@ -4,9 +4,8 @@
 	namespace App;
 	
 	
+	use Exception;
 	use PDO;
-	use App\View;
-	use App\MultiException;
 	
 	class Db
 	{
@@ -24,7 +23,9 @@
 					$config['password']
 				);
 			} catch (\PDOException $e){
-				throw new \App\Exceptions\Db();
+				$e = new MultiException();
+				$e[] = new Exception('Ошибка соединения с базой');
+				throw $e;
 			}
 		}
 		

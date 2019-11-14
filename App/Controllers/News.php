@@ -23,7 +23,9 @@
 		{
 			$id = (int)$_GET['id'];
 			if (!$this->view->article = \App\Models\News::findById($id)){
-				throw new Exception404('Новость отсутствует');
+				$e = new MultiException();
+				$e[] = new \Exception('Новость отсутствует');
+				throw $e;
 			};
 			$this->view->title = $this->view->article->title;
 			$this->view->display(__DIR__ . '/../templates/article.php');

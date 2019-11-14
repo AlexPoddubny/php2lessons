@@ -1,6 +1,5 @@
 <?php
 	
-	use App\Exceptions\Core;
 	use App\Exceptions\Db;
 	use App\Exceptions\Exception404;
 	
@@ -16,9 +15,9 @@
 	//var_dump($actionName);
 	try {
 		$controller->action($actionName);
-	} catch (Exception404 $e) {
+	} catch (\App\MultiException $e) {
 		$err = new \App\View();
-		$err->error = $e->getMessage();
+		$err->errors = $e;
 		//var_dump($err);
 		$err->display(__DIR__ . '/App/templates/error.php');
 	} catch (Db $e){
